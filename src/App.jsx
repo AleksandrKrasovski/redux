@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
@@ -6,6 +8,20 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+
+  // learning redux code
+  const dispatch = useDispatch()
+
+  const cash = useSelector((state) => state.cash)
+
+  const addCash = (cash) => {
+    dispatch({ type: 'ADD_CASH', payload: cash })
+  }
+
+  const getCash = (cash) => {
+    dispatch({ type: 'GET_CASH', payload: cash })
+  }
+  // end learning redux code
 
   return (
     <>
@@ -18,7 +34,7 @@ function App() {
         <div>
           <h1>Get started</h1>
           <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
+            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
           </p>
         </div>
         <button
@@ -28,6 +44,15 @@ function App() {
         >
           Count is {count}
         </button>
+        
+        <div title='learning redux'>
+          <div style={{display: 'flex'}}>
+            <button onClick={() => addCash(Number(prompt('Enter cash')))}>Add cash</button>
+            <div style={{padding: '10px', fontSize: '20px'}}>{cash}</div>
+            <button onClick={() => getCash(Number(prompt('Enter cash')))}>Get cash</button>
+          </div>
+        </div>
+
       </section>
 
       <div className="ticks"></div>

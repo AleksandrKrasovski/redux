@@ -1,2 +1,0 @@
-[core]
-    sshCommand = ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no
